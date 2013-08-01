@@ -14,14 +14,14 @@ Template.board.helpers({
     btnChoix: function() {
     return Session.get('Choix') ? 'btn-info' : 'btn-success';
   },
-  pierres: function() {
-    return Session.get('Pierre');
+  votesPierres: function() {
+    return Session.get('votesPierres');
   },
-  feuilles: function() {
-    return Session.get('Feuille');
+  votesFeuilles: function() {
+    return Session.get('votesFeuilles');
   },
-  ciseaux: function() {
-    return Session.get('Ciseaux');
+  votesCiseaux: function() {
+    return Session.get('votesCiseaux');
   },
   btnPierre: function() {
     return Session.get('Choix') === 'Pierre' ? 'btn-info' : '';
@@ -33,16 +33,18 @@ Template.board.helpers({
     return Session.get('Choix') === 'Ciseaux' ? 'btn-info' : '';
   },
   scorePierres: function() {
-    return Session.get('Pierre');
+    return Session.get('scorePierres');
   },
   scoreFeuilles: function() {
-    return Session.get('Feuille');
+    return Session.get('scoreFeuilles');
   },
   scoreCiseaux: function() {
-    return Session.get('Ciseaux');
+    return Session.get('scoreCiseaux');
+  },
+  scoreTotal: function() {
+    return Session.get('scoreTotal');
   },
   startstop: function() {
-    return Session.get('gameRun') ? 'STOP' : 'JOUER';
+    return Session.get('gamePlay') ? 'STOP' : 'JOUER';
   },
-
 });

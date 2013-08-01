@@ -5,8 +5,8 @@ Meteor.startup(function() {
 Votes = new Meteor.Collection('votes');
 
 Meteor.methods({
-	setChoice: function(name, choice, time) {
-		return _setChoice(name, choice, time)
+	setChoice: function( gameId, name, choice, time) {
+		return _setChoice(gameId, name, choice, time)
 	},
 });
 
