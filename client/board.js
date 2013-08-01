@@ -42,7 +42,7 @@ Template.board.helpers({
     return Session.get('scoreCiseaux');
   },
   scoreTotal: function() {
-    return Session.get('scoreTotal');
+    return getScoreTotal();
   },
   startstop: function() {
     return Session.get('gamePlay') ? 'STOP' : 'JOUER';

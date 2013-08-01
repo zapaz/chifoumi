@@ -6,6 +6,11 @@ Meteor.subscribe('allGames');
 var choixLibelle = 'Votre choix ?';
 var playLabel
 var stop;
+var scoreTotal = 0;
+
+getScoreTotal = function() {
+  return scoreTotal;
+}
 
 gameInit = function(game) {
   Session.set('votesPierres', '?');
@@ -66,10 +71,10 @@ gameScore = function() {
 
   var choix = Session.get('Choix');
   if (choix === 'Pierre') monScore = game.points_pierres;
-  if (choix === 'Feuille') monScore = game.points_feuilles;
-  if (choix === 'Ciseaux') monScore = game.points_ciseaux;
+  else if (choix === 'Feuille') monScore = game.points_feuilles;
+  else if (choix === 'Ciseaux') monScore = game.points_ciseaux;
 
-  return monScore;
+  if (monScore) scoreTotal += monScore;
 }
 
 // choix 
@@ -84,8 +89,8 @@ gameChoice = function(e) {
     Session.set('Choix', choix);
     Session.set(choix, Session.get(choix) + 1);
     if (choix == 'Pierre') Session.set('votesPierres', '+1');
-    if (choix == 'Feuille') Session.set('votesFeuilles', '+1');
-    if (choix == 'Ciseaux') Session.set('votesCiseaux', '+1');
+    else if (choix == 'Feuille') Session.set('votesFeuilles', '+1');
+    else if (choix == 'Ciseaux') Session.set('votesCiseaux', '+1');
 
     var currentTime = new Date().getTime();
     Meteor.call('setChoice', Session.get('gameId'), 'al', choix, currentTime);
