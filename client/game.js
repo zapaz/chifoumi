@@ -6,7 +6,7 @@ Meteor.subscribe('allGames');
 var choixLibelle = 'Votre choix ?';
 var playLabel
 var stop;
-
+var nbProg = 0;
 
 // boucle infinie
 gameStart = function() {
@@ -21,32 +21,34 @@ gameStart = function() {
 // boucle finie pour la barre de progression
 gameProgression = function() {
   currentTime = new Date().getTime();
-  //console.log('gameProgression ' + currentTime);
+  nbProg++;
+  // console.log('gameProgression nbProg:' + nbProg);
+
   var progression = 0;
   var game = Games.findOne({
-    status: 'running'
+    status: 'running',
+    start_time: {
+      $lt: currentTime
+    },
+    end_time: {
+      $gt: currentTime
+    },
   });
 
   if (game) {
+    // console.log('gameProgression Game find ! <= ' + currentTime);
     Session.set('gameId', game._id);
 
     stime = game.start_time;
-    etime = game.start_time;
-    if (stime && etime) {
-      duree = etime - stime;
-      if (duree) {
-        if (currentTime < stime) progression = 0;
-        else if (currentTime > etime) progression = 100;
-        else {
-          progression = 100 * (currentTime - stime) / (duree);
-        }
-      }
+    etime = game.end_time;
+    duree = etime - stime;
+    if (duree) {
+      progression = 100 * (currentTime - stime) / (duree);
     }
   }
-
   Session.set('gameProgression', progression);
   if (progression < 100) {
-    setTimeout(gameProgression, 1000);
+    Meteor.setTimeout(gameProgression, 10);
   }
 };
 
