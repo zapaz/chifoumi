@@ -1,0 +1,64 @@
+<template name="board">
+	<div class="row">
+		<div class="span2 offset1"><p>
+			<button class="btn btn-block btn-large {{btnChoix}}" type="button">{{labelChoix}}</button>
+		</p></div>
+		<div class="span1">
+			<button class="btn btn-block btn-large btn-success" type="button">Votes</button>
+		</div>
+		<div class="span1">
+			<button class="btn btn-block btn-large btn-success" type="button">Scores</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span2 offset1"><p>
+			<button class="btn btn-block btn-large {{btnPierre}} pfc" type="button">Pierre</button>
+		</p></div>
+		<div class="span1">
+			<button class="btn btn-block btn-large {{btnPierre}}" type="button">{{votesPierres}}</button>
+		</div>
+		<div class="span1">
+			<button class="btn btn-block btn-large {{btnPierre}}" type="button">{{scorePierres}}</button>
+		</div>
+		<div class="span2">
+			<button class="btn btn-block btn-large btn-success" type="button">Votre Score</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span2 offset1"><p>
+			<button class="btn btn-block btn-large {{btnFeuille}} pfc" type="button">Feuille</button>
+		</p></div>
+		<div class="span1">
+			<button class="btn btn-block btn-large {{btnFeuille}}" type="button">{{votesFeuilles}}</button>
+		</div>
+		<div class="span1">
+			<button class="btn btn-block btn-large {{btnFeuille}}" type="button">{{scoreFeuilles}}</button>
+		</div>
+		<div class="span2">
+			<button class="btn btn-block btn-large" type="button">{{scoreTotal}}</button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="span2 offset1"><p>
+			<button class="btn btn-block btn-large {{btnCiseaux}} pfc" type="button">Ciseaux</button>
+		</p></div>
+		<div class="span1">
+			<button class="btn btn-block btn-large {{btnCiseaux}}" type="button">{{votesCiseaux}}</button>
+		</div>
+		<div class="span1">
+			<button class="btn btn-block btn-large {{btnCiseaux}}" type="button">{{scoreCiseaux}}</button>
+		</div>
+	</div>
+
+</template>
+
+<template name="board2">
+	<div class="row">
+		<div class="span2 offset3"><p>
+			<button class="btn btn-block btn-large btn-success startstop" type="button">{{startstop}}</button>
+		</p></div>
+	</div>
+</template>
