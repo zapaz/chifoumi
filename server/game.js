@@ -9,7 +9,7 @@ var gameId;
 var pierre = 0;
 var feuille = 0;
 var ciseaux = 0;
-var computerNumber = 17;
+var computerNumber = 3;
 
 _setChoice = function(id, name, choice, time) {
 		console.log('setChoice ' + id + ' ' + name + ' ' + choice);
