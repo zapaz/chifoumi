@@ -1,0 +1,6 @@
+{
+	"scripts":{
+		"install": "./install.sh",
+		"start": "node my_app/main.js"
+	}
+}
