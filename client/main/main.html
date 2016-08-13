@@ -1,0 +1,19 @@
+<head>
+	<title>CHIFOUMI</title>
+</head>
+
+<body>
+	<div class="container"> {{> navbar}} {{> board}} {{> board2}} </div>
+</body>
+<template name="navbar">
+	<div class="navbar">
+		<div class="navbar-inner"> <a class="brand" href="/">CHIFOUMI</a>
+			<ul class="nav">
+				<li><a href='#'>Jeu n°{{session 'gameNumber'}}</a></li>
+			</ul>
+			<ul class="nav">
+				<li><a href="#">{{> progression}}</a></li>
+			</ul>
+		</div>
+	</div>
+</template>

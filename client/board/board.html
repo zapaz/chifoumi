@@ -1,7 +1,7 @@
 <template name="board">
 	<div class="row">
 		<div class="span2 offset1"><p>
-			<button class="btn btn-block btn-large {{btnChoix}}" type="button">{{labelChoix}}</button>
+			<button class="btn btn-block btn-large {{btnChoix}}" type="button">{{message}}</button>
 		</p></div>
 		<div class="span1">
 			<button class="btn btn-block btn-large btn-success" type="button">Votes</button>
@@ -13,13 +13,13 @@
 
 	<div class="row">
 		<div class="span2 offset1"><p>
-			<button class="btn btn-block btn-large {{btnPierre}} pfc" type="button">Pierre</button>
+			<button class="btn btn-block btn-large {{btnSelected 'Pierre'}} pfc" type="button">Pierre</button>
 		</p></div>
 		<div class="span1">
-			<button class="btn btn-block btn-large {{btnPierre}}" type="button">{{votesPierres}}</button>
+			<button class="btn btn-block btn-large {{btnSelected 'Pierre'}}" type="button">{{session 'votesPierres'}}</button>
 		</div>
 		<div class="span1">
-			<button class="btn btn-block btn-large {{btnPierre}}" type="button">{{scorePierres}}</button>
+			<button class="btn btn-block btn-large {{btnSelected 'Pierre'}}" type="button">{{session 'scorePierres'}}</button>
 		</div>
 		<div class="span2">
 			<button class="btn btn-block btn-large btn-success" type="button">Votre Score</button>
@@ -28,13 +28,13 @@
 
 	<div class="row">
 		<div class="span2 offset1"><p>
-			<button class="btn btn-block btn-large {{btnFeuille}} pfc" type="button">Feuille</button>
+			<button class="btn btn-block btn-large {{btnSelected 'Feuille'}} pfc" type="button">Feuille</button>
 		</p></div>
 		<div class="span1">
-			<button class="btn btn-block btn-large {{btnFeuille}}" type="button">{{votesFeuilles}}</button>
+			<button class="btn btn-block btn-large {{btnSelected 'Feuille'}}" type="button">{{session 'votesFeuilles'}}</button>
 		</div>
 		<div class="span1">
-			<button class="btn btn-block btn-large {{btnFeuille}}" type="button">{{scoreFeuilles}}</button>
+			<button class="btn btn-block btn-large {{btnSelected 'Feuille'}}" type="button">{{session 'scoreFeuilles'}}</button>
 		</div>
 		<div class="span2">
 			<button class="btn btn-block btn-large" type="button">{{scoreTotal}}</button>
@@ -43,13 +43,13 @@
 
 	<div class="row">
 		<div class="span2 offset1"><p>
-			<button class="btn btn-block btn-large {{btnCiseaux}} pfc" type="button">Ciseaux</button>
+			<button class="btn btn-block btn-large {{btnSelected 'Ciseaux'}} pfc" type="button">Ciseaux</button>
 		</p></div>
 		<div class="span1">
-			<button class="btn btn-block btn-large {{btnCiseaux}}" type="button">{{votesCiseaux}}</button>
+			<button class="btn btn-block btn-large {{btnSelected 'Ciseaux'}}" type="button">{{session 'votesCiseaux'}}</button>
 		</div>
 		<div class="span1">
-			<button class="btn btn-block btn-large {{btnCiseaux}}" type="button">{{scoreCiseaux}}</button>
+			<button class="btn btn-block btn-large {{btnSelected 'Ciseaux'}}" type="button">{{session 'scoreCiseaux'}}</button>
 		</div>
 	</div>
 

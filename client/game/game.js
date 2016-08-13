@@ -52,7 +52,7 @@ gameStart = function() {
   Session.set('gamePlay', true);
 };
 
-// choix 
+// choix
 gameScore = function() {
   console.log('gameScore');
 
@@ -62,22 +62,29 @@ gameScore = function() {
   Session.set('gameRunning', false);
   game = getGame(Session.get('gameId'));
 
-  Session.set('votesPierres', game.votes_pierres);
-  Session.set('votesFeuilles', game.votes_feuilles);
-  Session.set('votesCiseaux', game.votes_ciseaux);
-  Session.set('scorePierres', game.points_pierres);
-  Session.set('scoreFeuilles', game.points_feuilles);
-  Session.set('scoreCiseaux', game.points_ciseaux);
+  if (game){
+    Session.set('votesPierres', game.votes_pierres);
+    Session.set('votesFeuilles', game.votes_feuilles);
+    Session.set('votesCiseaux', game.votes_ciseaux);
+    Session.set('scorePierres', game.points_pierres);
+    Session.set('scoreFeuilles', game.points_feuilles);
+    Session.set('scoreCiseaux', game.points_ciseaux);
+    console.log('gameScore game:', game);    
+  }
 
   var choix = Session.get('Choix');
+  console.log('gameScore choix:' + choix);
+
   if (choix === 'Pierre') monScore = game.points_pierres;
   else if (choix === 'Feuille') monScore = game.points_feuilles;
   else if (choix === 'Ciseaux') monScore = game.points_ciseaux;
 
   if (monScore) scoreTotal += monScore;
+  console.log('gameScore monScore:' + monScore);
+  console.log('gameScore scoreTotal:' + scoreTotal);
 }
 
-// choix 
+// choix
 gameChoice = function(e) {
   // gamePlay : en train de jeu
   // gameRunning : un jeu est démarré par le serveur
@@ -109,3 +116,31 @@ gameStartStop = function(e) {
     gameStart();
   }
 };
+
+getCurrentGameProgression = function(game) {
+    // console.log('getCurrentGameProgression');
+    var progression = 0;
+    var currentTime = new Date().getTime();
+    if (game) {
+        stime = game.start_time;
+        etime = game.end_time;
+        duree = etime - stime;
+        progression = duree ? Math.ceil(100 * (currentTime - stime) / duree) : 100;
+    }
+    return progression;
+}
+
+getCurrentGame = function() {
+    // console.log('getCurrentGame');
+    var currentTime = new Date().getTime();
+    var game = Games.findOne({
+        status: 'running',
+        start_time: {
+            $lt: currentTime
+        },
+        end_time: {
+            $gt: currentTime
+        },
+    });
+    return game;
+}

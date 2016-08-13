@@ -5,7 +5,7 @@ Meteor.startup(function() {
 
 var gameNumber = 0;
 
-Deps.autorun(function() {
+Tracker.autorun(function() {
 	if (Session.get('gamePlay')) {
 		if (gameNumber === Session.get('gameNumber')) {
 			console.log('Fin du Jeu n°' + gameNumber);
